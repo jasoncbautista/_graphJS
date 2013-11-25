@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="underscore.js"></script>
+        <script type="text/javascript" src="fighters.js"></script>
+        <
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<title>three.js css3d - periodic table</title>
@@ -254,7 +258,8 @@
 
 				// table
 
-				for ( var i = 0; i < table.length; i += 5 ) {
+				for ( var i = 0; i < fullList.fighters.length; i += 5 ) {
+                    var fighter = fullList.fighters[i];
 
 					var element = document.createElement( 'div' );
 					element.className = 'element';
@@ -262,17 +267,17 @@
 
 					var number = document.createElement( 'div' );
 					number.className = 'number';
-					number.textContent = i + 1;
+					number.textContent = fighter.weight  // i + 1;
 					element.appendChild( number );
 
 					var symbol = document.createElement( 'div' );
 					symbol.className = 'symbol';
-					symbol.textContent =  "Really long name" ;// table[ i ];
+					symbol.textContent =   fighter.first_name // [ i ];
 					element.appendChild( symbol );
 
 					var details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					details.className = 'details'; 
+					details.innerHTML =  fighter.last_name  + '<br>' + fighter.height; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
 					element.appendChild( details );
 
 					var object = new THREE.CSS3DObject( element );
@@ -286,8 +291,10 @@
 					//
 
 					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
+                    var x = i;
+                    var y = i;
+					object.position.x = ( x  * 140 ) - 1330;
+					object.position.y = - ( y  * 180 ) + 990;
 
 					targets.table.push( object );
 
