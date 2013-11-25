@@ -267,17 +267,17 @@
 
 					var number = document.createElement( 'div' );
 					number.className = 'number';
-					number.textContent = fighter.weight  // i + 1;
+					number.textContent =  i; // fighter.weight  // i + 1;
 					element.appendChild( number );
 
 					var symbol = document.createElement( 'div' );
 					symbol.className = 'symbol';
-					symbol.textContent =   fighter.first_name // [ i ];
+					symbol.textContent =   fighter.last_name// [ i ];
 					element.appendChild( symbol );
 
 					var details = document.createElement( 'div' );
 					details.className = 'details'; 
-					details.innerHTML =  fighter.last_name  + '<br>' + fighter.height; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
+                    details.innerHTML =  fighter.first_name+ '<br>' + fighter.height + "cm" + "<br>" + fighter.weight+ "lb" ; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
 					element.appendChild( details );
 
 					var object = new THREE.CSS3DObject( element );
