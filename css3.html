@@ -281,7 +281,7 @@
 
 					var details = document.createElement( 'div' );
 					details.className = 'details'; 
-                    details.innerHTML =  "<img src='http://media.ufc.tv/generated_images_sorted/Fighter/viscardi-andrade/viscardi-andrade_309084_small_thumbnail.png' /><br>" +  fighter.first_name+ '<br>' + fighter.height + "cm" + "<br>" + fighter.weight+ "lb" ; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
+                    details.innerHTML =  "<img src='" +fighter.img  +"' /><br>" +  fighter.first_name+ '<br>' + fighter.height + "cm" + "<br>" + fighter.weight+ "lb" ; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
 					element.appendChild( details );
 
 					var object = new THREE.CSS3DObject( element );
