@@ -60,7 +60,8 @@
 			.element:hover {
 				/* box-shadow: 0px 0px 12px rgba(0,255,255,0.75); */
 				box-shadow: 0px 0px 12px rgba( 255 ,0 , 0 ,0.75);
-				border: 1px solid rgba(127,255,255,0.75);
+				/* border: 1px solid rgba(127,255,255,0.75);*/
+				border: 1px solid rgba(255 ,127 ,127 ,0.75);
 			}
 
 				.element .number {
@@ -274,6 +275,14 @@
                     var fighter = fullList.fighters[i];
 
 					var element = document.createElement( 'div' );
+
+                    (function(element, fighter) {
+                        element.onclick = function() {
+                                var url= "https://www.google.com/#q=" + fighter.first_name + " " + fighter.last_name;
+                                window.open(url,'_blank');
+                        };
+                    }(element, fighter));
+
 					element.className = 'element';
 					// element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
 
