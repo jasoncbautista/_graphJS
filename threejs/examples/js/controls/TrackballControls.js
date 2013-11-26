@@ -126,7 +126,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 			} else {
 
 				mouseOnBall.z = .5 / length;
-				
+
 			}
 
 		} else if ( length > 1.0 ) {
@@ -141,7 +141,9 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 		_eye.copy( _this.object.position ).sub( _this.target );
 
-		var projection = _this.object.up.clone().setLength( mouseOnBall.y );
+		// var projection = _this.object.up.clone().setLength( mouseOnBall.y );
+        // TODO: normalize y  so it can only rotate so far:
+		var projection = _this.object.up.clone().setLength( 0  );
 		projection.add( _this.object.up.clone().cross( _eye ).setLength( mouseOnBall.x ) );
 		projection.add( _eye.setLength( mouseOnBall.z ) );
 
