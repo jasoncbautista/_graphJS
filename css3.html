@@ -376,6 +376,9 @@
 
 				controls = new THREE.TrackballControls( camera, renderer.domElement );
 				controls.rotateSpeed = 0.5;
+				// controls.noRoll= true;
+				// controls.noRotate= true;
+
 				controls.addEventListener( 'change', render );
 
 				var button = document.getElementById( 'table' );
