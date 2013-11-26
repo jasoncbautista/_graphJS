@@ -12,6 +12,9 @@
 			html, body {
 				height: 100%;
 			}
+            img.fighter {
+                opacity: 0.4;
+            }
 
 			body {
 				background-color: #000000;
@@ -281,7 +284,7 @@
 
 					var details = document.createElement( 'div' );
 					details.className = 'details'; 
-                    details.innerHTML =  "<img src='" +fighter.img  +"' /><br>" +  fighter.first_name+ '<br>' + fighter.height + "cm" + "<br>" + fighter.weight+ "lb" ; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
+                    details.innerHTML =  "<img class='fighter'  src='" +fighter.img  +"' /><br>" +  fighter.first_name+ '<br>' + fighter.height + "cm" + "<br>" + fighter.weight+ "lb" ; // table[ i + 1 ] + '<br>' + table[ i + 2 ];
 					element.appendChild( details );
 
 					var object = new THREE.CSS3DObject( element );
