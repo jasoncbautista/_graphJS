@@ -39,7 +39,7 @@
 
 				scene = new THREE.Scene();
 
-				var geometry = new THREE.PlaneGeometry( 100, 100 );
+				var geometry = new THREE.PlaneGeometry( 200, 120 );
 
 				var bitmap = generateTextureBase();
 
@@ -48,7 +48,7 @@
 					mesh = levels[ i ] = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { map: new THREE.Texture( generateTextureLevel( bitmap ) ), transparent: true, depthWrite: false, depthTest: false } ) );
 					mesh.material.map.needsUpdate = true;
 
-					mesh.position.y = i * 0.25;
+					mesh.position.y = i * 0.35;
 					mesh.rotation.x = - Math.PI / 2;
 
 					scene.add( mesh );
@@ -57,7 +57,7 @@
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.sortObjects = false;
-				renderer.setClearColor( 0x003300 );
+				renderer.setClearColor( 0x000300 ); // Background color
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				document.body.appendChild( renderer.domElement );
 
