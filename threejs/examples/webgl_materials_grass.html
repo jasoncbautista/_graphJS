@@ -39,7 +39,7 @@
 
 				scene = new THREE.Scene();
 
-				var geometry = new THREE.PlaneGeometry( 200, 120 );
+				var geometry = new THREE.PlaneGeometry( 200, 90 );
 
 				var bitmap = generateTextureBase();
 
@@ -48,7 +48,7 @@
 					mesh = levels[ i ] = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { map: new THREE.Texture( generateTextureLevel( bitmap ) ), transparent: true, depthWrite: false, depthTest: false } ) );
 					mesh.material.map.needsUpdate = true;
 
-					mesh.position.y = i * 0.35;
+					mesh.position.y = i * 0.15;
 					mesh.rotation.x = - Math.PI / 2;
 
 					scene.add( mesh );
@@ -128,16 +128,16 @@
 
 				var time = Date.now() / 6000;
 
-				camera.position.x = 80 * Math.cos( time );
-				camera.position.z = 80 * Math.sin( time );
+				//camera.position.x = 80 * Math.cos( time );
+				//camera.position.z = 80 * Math.sin( time );
 
 				camera.lookAt( scene.position );
 
 				for ( var i = 0, l = levels.length; i < l; i ++ ) {
 
 					mesh = levels[ i ];
-					mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
-					mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
+					//mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
+					//mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
 
 				}
 
