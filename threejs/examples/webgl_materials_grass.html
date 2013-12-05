@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
-				background:#030;
+				background:red;
 				color:#fff;
 				padding:0;
 				margin:0;
@@ -26,7 +26,7 @@
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-			var camera, scene, renderer,
+			var camera, scene, renderer, sphere,
 			mesh, levels = [];
 
 			init();
@@ -34,10 +34,85 @@
 
 			function init() {
 
-				camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-				camera.position.set( 0, 75, 100 );
+
+                // set the scene size
+                var WIDTH = window.innerWidth; //400,
+                  HEIGHT = window.innerHeight; //300;
+
+                  // set some camera attributes
+                  var VIEW_ANGLE = 60,
+                  ASPECT = WIDTH / HEIGHT,
+                  NEAR = 1.0,
+                  FAR = 1000;
+
+                  // get the DOM element to attach to
+                  // - assume we've got jQuery to hand
+
+                  // create a WebGL renderer, camera
+                  // and a scene
+                  camera =
+                  new THREE.PerspectiveCamera(
+                  VIEW_ANGLE,
+                  ASPECT,
+                  NEAR,
+                  FAR);
+
+				// camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+				//camera.position.set( 0, 75, 100 );
 
 				scene = new THREE.Scene();
+
+                //camera.position.z = 100;
+
+
+                // Spheres
+
+                // set up the sphere vars
+                var radius = 10,
+                segments = 16,
+                rings = 16;
+
+
+
+                // create the sphere's material
+                var sphereMaterial =
+                new THREE.MeshLambertMaterial(
+                {
+                    color: 0xCC0000
+                });
+                // create a new mesh with
+                // sphere geometry - we will cover
+                // the sphereMaterial next!
+                sphere = new THREE.Mesh(
+
+                new THREE.SphereGeometry(
+                radius,
+                segments,
+                rings),
+
+                sphereMaterial);
+
+                sphere.geometry.dynamic = true;
+
+                // add the sphere to the scene
+                scene.add(sphere);
+
+
+                // create a point light
+                var pointLight =
+                new THREE.PointLight(0xFFFFFF);
+
+                // set its position
+                pointLight.position.x = 10;
+                pointLight.position.y = 50;
+                pointLight.position.z = 130;
+
+                // add to the scene
+                scene.add(pointLight)
+
+                // END SPHERE
+
+
 
 				var geometry = new THREE.PlaneGeometry( 200, 90 );
 
@@ -55,10 +130,19 @@
 
 				}
 
+
+                /*
+				sphere.position.y = 10;
+				sphere.position.x = 10;
+				sphere.position.z = 10;
+                */
+
+
+
 				renderer = new THREE.WebGLRenderer();
 				renderer.sortObjects = false;
-				renderer.setClearColor( 0x000300 ); // Background color
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setClearColor( 0x0003FF ); // Background color
+				renderer.setSize( WIDTH, HEIGHT );
 				document.body.appendChild( renderer.domElement );
 
 				//
@@ -128,16 +212,25 @@
 
 				var time = Date.now() / 6000;
 
-				//camera.position.x = 80 * Math.cos( time );
-				//camera.position.z = 80 * Math.sin( time );
+
+                /*
+				sphere.position.y = 10;
+				sphere.position.x = 10;
+				sphere.position.z = 10;
+                */
+
+
+
+				camera.position.x = 80 * Math.cos( time );
+				camera.position.z = 80 * Math.sin( time );
 
 				camera.lookAt( scene.position );
 
 				for ( var i = 0, l = levels.length; i < l; i ++ ) {
 
 					mesh = levels[ i ];
-					//mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
-					//mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
+					mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
+					mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
 
 				}
 
