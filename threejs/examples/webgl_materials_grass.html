@@ -144,7 +144,7 @@
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.sortObjects = false;
-				renderer.setClearColor( 0x0003FF ); // Background color
+				renderer.setClearColor( 0x000300 ); // Background color
 				renderer.setSize( WIDTH, HEIGHT );
 				document.body.appendChild( renderer.domElement );
 
@@ -224,16 +224,16 @@
 
 
 
-				camera.position.x = 80 * Math.cos( time );
-				camera.position.z = 80 * Math.sin( time );
+				//camera.position.x = 80 * Math.cos( time );
+				//camera.position.z = 80 * Math.sin( time );
 
 				camera.lookAt( scene.position );
 
 				for ( var i = 0, l = levels.length; i < l; i ++ ) {
 
 					mesh = levels[ i ];
-					mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
-					mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
+					//mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
+					//mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
 
 				}
 
