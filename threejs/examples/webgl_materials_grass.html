@@ -26,7 +26,7 @@
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-			var camera, scene, renderer, sphere,
+			var camera, scene, renderer, sphere,WIDTH, HEIGHT,
 			mesh, levels = [];
 
 			init();
@@ -36,10 +36,10 @@
 
 
                 // set the scene size
-                var WIDTH = window.innerWidth; //400,
-                  HEIGHT = window.innerHeight; //300;
+                WIDTH = window.innerWidth; //400,
+                HEIGHT = window.innerHeight; //300;
 
-                  // set some camera attributes
+                // set some camera attributes
                   var VIEW_ANGLE = 60,
                   ASPECT = WIDTH / HEIGHT,
                   NEAR = 1.0,
@@ -58,7 +58,7 @@
                   FAR);
 
 				// camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-				//camera.position.set( 0, 75, 100 );
+				camera.position.set( 0, 75, 100 );
 
 				scene = new THREE.Scene();
 
@@ -94,6 +94,8 @@
 
                 sphere.geometry.dynamic = true;
 
+                sphere.position.y = 20;
+                sphere.position.z = 00;
                 // add the sphere to the scene
                 scene.add(sphere);
 
